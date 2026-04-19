@@ -1,0 +1,86 @@
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ── Entry wrapper ── */
+.planet-card-entry {
+  animation: card-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) calc(var(--card-index, 0) * 80ms) both;
+}
+
+/* ── BorderGlow wrapper ── */
+
+.planet-card-glow {
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.planet-card-glow:hover {
+  transform: scale(1.035);
+}
+
+/* ── Card ── */
+.planet-card {
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.04);
+  border: none;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  text-align: left;
+  padding: 1px;
+  font-family: inherit;
+  color: inherit;
+  width: 100%;
+}
+
+.planet-card__img-wrap {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: 8px;
+  background: var(--bg);
+}
+
+.planet-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease-in-out;
+}
+
+.planet-card-glow:hover .planet-card__img {
+  transform: scale(1.04);
+}
+
+.planet-card__body {
+  padding: 1rem 1.15rem 1.15rem;
+}
+
+.planet-card__name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-h);
+  margin-bottom: 0.15rem;
+}
+
+.planet-card__type {
+  font-size: 0.7rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  margin-bottom: 0.45rem;
+}
+
+.planet-card__tagline {
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  line-height: 1.45;
+}
