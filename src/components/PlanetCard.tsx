@@ -10,11 +10,9 @@ type PlanetCardProps = {
 
 export function PlanetCard({ planet, index = 0, onClick }: PlanetCardProps) {
     return (
-        <div className="planet-card-entry" style={{ '--card-index': index } as React.CSSProperties}>
+        <div className="staggered-card-entry" style={{ '--card-index': index } as React.CSSProperties}>
             <BorderGlow
                 edgeSensitivity={30}
-                animated={true}
-                animationDelay={index * 100}
                 glowColor="260 75 72"
                 backgroundColor="rgba(22, 27, 34)"
                 borderRadius={8}

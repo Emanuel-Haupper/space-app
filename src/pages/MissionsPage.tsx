@@ -1,6 +1,8 @@
+import { useState } from 'react'
 import { DataTable } from '../_my-components/index.ts'
 import { Badge } from '../components/Badge.tsx'
 import { PageHeader } from '../components/PageHeader.tsx'
+import { MissionDetail } from '../components/MissionDetail.tsx'
 import './MissionsPage.css'
 
 type Mission = {
@@ -13,30 +15,30 @@ type Mission = {
 }
 
 const MISSIONS: Mission[] = [
-  { name: 'Sputnik 1', year: 1957, country: 'USSR', crew: 0, status: 'completed', destination: 'Earth Orbit' },
-  { name: 'Vostok 1', year: 1961, country: 'USSR', crew: 1, status: 'completed', destination: 'Earth Orbit' },
-  { name: 'Apollo 11', year: 1969, country: 'USA', crew: 3, status: 'completed', destination: 'Moon' },
-  { name: 'Apollo 13', year: 1970, country: 'USA', crew: 3, status: 'completed', destination: 'Moon' },
-  { name: 'Viking 1', year: 1975, country: 'USA', crew: 0, status: 'completed', destination: 'Mars' },
-  { name: 'STS-1 Columbia', year: 1981, country: 'USA', crew: 2, status: 'completed', destination: 'Earth Orbit' },
-  { name: 'Mir Station', year: 1986, country: 'USSR', crew: 0, status: 'completed', destination: 'Earth Orbit' },
-  { name: 'Hubble Space Telescope', year: 1990, country: 'USA', crew: 0, status: 'active', destination: 'Earth Orbit' },
-  { name: 'Mars Pathfinder', year: 1996, country: 'USA', crew: 0, status: 'completed', destination: 'Mars' },
-  { name: 'ISS Assembly', year: 1998, country: 'International', crew: 0, status: 'active', destination: 'ISS' },
-  { name: 'Mars Curiosity', year: 2011, country: 'USA', crew: 0, status: 'active', destination: 'Mars' },
-  { name: 'Crew Dragon Demo-2', year: 2020, country: 'USA', crew: 2, status: 'completed', destination: 'ISS' },
-  { name: 'Tianwen-1', year: 2020, country: 'China', crew: 0, status: 'completed', destination: 'Mars' },
-  { name: 'JWST', year: 2021, country: 'International', crew: 0, status: 'active', destination: 'L2 Point' },
-  { name: 'Artemis I', year: 2022, country: 'USA', crew: 0, status: 'completed', destination: 'Moon' },
-  { name: 'Artemis II', year: 2025, country: 'USA', crew: 4, status: 'active', destination: 'Moon' },
-  { name: 'Mars Perseverance', year: 2021, country: 'USA', crew: 0, status: 'active', destination: 'Mars' },
-  { name: 'Luna-25', year: 2023, country: 'Russia', crew: 0, status: 'completed', destination: 'Moon' },
-  { name: 'Chandrayaan-3', year: 2023, country: 'India', crew: 0, status: 'completed', destination: 'Moon' },
-  { name: 'Europa Clipper', year: 2024, country: 'USA', crew: 0, status: 'active', destination: 'Jupiter' },
+  { name: 'Sputnik 1', year: 1957, country: 'USSR', crew: 0, status: 'Completed', destination: 'Earth Orbit' },
+  { name: 'Vostok 1', year: 1961, country: 'USSR', crew: 1, status: 'Completed', destination: 'Earth Orbit' },
+  { name: 'Apollo 11', year: 1969, country: 'USA', crew: 3, status: 'Completed', destination: 'Moon' },
+  { name: 'Apollo 13', year: 1970, country: 'USA', crew: 3, status: 'Completed', destination: 'Moon' },
+  { name: 'Viking 1', year: 1975, country: 'USA', crew: 0, status: 'Completed', destination: 'Mars' },
+  { name: 'STS-1 Columbia', year: 1981, country: 'USA', crew: 2, status: 'Completed', destination: 'Earth Orbit' },
+  { name: 'Mir Station', year: 1986, country: 'USSR', crew: 0, status: 'Completed', destination: 'Earth Orbit' },
+  { name: 'Hubble Space Telescope', year: 1990, country: 'USA', crew: 0, status: 'Active', destination: 'Earth Orbit' },
+  { name: 'Mars Pathfinder', year: 1996, country: 'USA', crew: 0, status: 'Completed', destination: 'Mars' },
+  { name: 'ISS Assembly', year: 1998, country: 'International', crew: 0, status: 'Active', destination: 'ISS' },
+  { name: 'Mars Curiosity', year: 2011, country: 'USA', crew: 0, status: 'Active', destination: 'Mars' },
+  { name: 'Crew Dragon Demo-2', year: 2020, country: 'USA', crew: 2, status: 'Completed', destination: 'ISS' },
+  { name: 'Tianwen-1', year: 2020, country: 'China', crew: 0, status: 'Completed', destination: 'Mars' },
+  { name: 'JWST', year: 2021, country: 'International', crew: 0, status: 'Active', destination: 'L2 Point' },
+  { name: 'Artemis I', year: 2022, country: 'USA', crew: 0, status: 'Completed', destination: 'Moon' },
+  { name: 'Artemis II', year: 2025, country: 'USA', crew: 4, status: 'Active', destination: 'Moon' },
+  { name: 'Mars Perseverance', year: 2021, country: 'USA', crew: 0, status: 'Active', destination: 'Mars' },
+  { name: 'Luna-25', year: 2023, country: 'Russia', crew: 0, status: 'Completed', destination: 'Moon' },
+  { name: 'Chandrayaan-3', year: 2023, country: 'India', crew: 0, status: 'Completed', destination: 'Moon' },
+  { name: 'Europa Clipper', year: 2024, country: 'USA', crew: 0, status: 'Active', destination: 'Jupiter' },
 ]
 
 function statusVariant(status: string) {
-  if (status === 'active') return 'success'
+  if (status === 'Active') return 'success'
   if (status === 'planned') return 'warning'
   return 'default'
 }
@@ -61,8 +63,10 @@ const COLUMNS = [
 ]
 
 export function MissionsPage() {
+  const [selectedMission, setSelectedMission] = useState<Mission | null>(null)
+
   return (
-    <div className="missions-page">
+    <div className="missions-page page-transition">
       <PageHeader
         title="Space Missions"
         subtitle="Landmark missions across the history of space exploration — sort, filter and paginate below"
@@ -77,7 +81,14 @@ export function MissionsPage() {
           { key: 'status', label: 'Status', type: 'select', options: Array.from(new Set(MISSIONS.map(m => m.status))) },
           { key: 'year', label: 'Year', type: 'range', min: Math.min(...MISSIONS.map(m => m.year)), max: Math.max(...MISSIONS.map(m => m.year)) },
         ]}
+        onRowClick={row => setSelectedMission(row as Mission)}
       />
+      {selectedMission && (
+        <MissionDetail
+          mission={selectedMission}
+          onClose={() => setSelectedMission(null)}
+        />
+      )}
     </div>
   )
 }

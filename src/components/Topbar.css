@@ -6,16 +6,17 @@
   height: 52px;
   border-bottom: 1px solid var(--border);
   flex-shrink: 0;
-  z-index: 100;
+  z-index: 1000;
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
 }
 
 .topbar__label {
   color: var(--text-h);
+  font-family: 'Syncopate', sans-serif !important;
   cursor: pointer;
   font-size: 0.88rem;
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: 0.01em;
   display: flex;
   align-items: center;

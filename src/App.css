@@ -20,6 +20,35 @@
   padding: 2rem;
 }
 
+.page-transition {
+  animation: change-page 0.4s ease-in-out;
+}
+
+/* ── Entry wrapper ── */
+.staggered-card-entry {
+  animation: card-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) calc(var(--card-index, 0) * 80ms) both;
+}
+
+@keyframes change-page {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 @media (max-width: 768px) {
   .app-content__inner {
     padding: 1.25rem;

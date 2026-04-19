@@ -35,7 +35,7 @@
 
 .planet-detail__close {
   position: fixed;
-  top: 3.85rem;
+  top: 3.5rem;
   right: 0.85rem;
   z-index: 10;
   background: rgba(0, 0, 0, 0.45);

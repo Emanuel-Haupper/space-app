@@ -20,7 +20,7 @@ export function HomePage() {
     ]
 
     return (
-        <div className="home-page">
+        <div className="home-page page-transition">
             <div className="galaxy-bg">
                 <Galaxy
                     mouseInteraction={false}

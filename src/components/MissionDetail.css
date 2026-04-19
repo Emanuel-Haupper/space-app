@@ -1,0 +1,317 @@
+/* ── Overlay ── */
+.mission-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(4px);
+  animation: mission-overlay-in 0.2s ease;
+}
+
+@keyframes mission-overlay-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── Panel ── */
+.mission-detail {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  height: 100vh;
+  background: var(--surface);
+  border-left: 1px solid var(--border);
+  overflow-y: auto;
+  animation: mission-panel-slide 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes mission-panel-slide {
+  from { transform: translateX(100%); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+
+.mission-detail__close {
+  position: fixed;
+  top: 3.85rem;
+  right: 0.85rem;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text);
+  border-radius: 8px;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.mission-detail__close:hover {
+  background: rgba(0, 0, 0, 0.7);
+  color: var(--text-h);
+}
+
+/* ── Hero ── */
+.mission-detail__hero {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.mission-detail__hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mission-detail__hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, var(--surface) 0%, transparent 60%);
+}
+
+.mission-detail__hero-content {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 1.5rem;
+  right: 1.5rem;
+}
+
+.mission-detail__destination-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+}
+
+.mission-detail__name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-h);
+  margin: 0 0 0.5rem;
+  line-height: 1.2;
+}
+
+.mission-detail__status {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+/* ── Content ── */
+.mission-detail__content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ── Meta grid ── */
+.mission-detail__meta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.mission-detail__meta-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.8rem 1rem;
+}
+
+.mission-detail__meta-icon {
+  color: var(--accent);
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+.mission-detail__meta-label {
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-dim);
+  font-weight: 600;
+  margin: 0 0 0.15rem;
+}
+
+.mission-detail__meta-value {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-h);
+  margin: 0;
+}
+
+/* ── Fact ── */
+.mission-detail__fact {
+  background: rgba(167, 139, 250, 0.06);
+  border: 1px solid rgba(167, 139, 250, 0.18);
+  border-radius: 10px;
+  padding: 1rem 1.1rem;
+}
+
+.mission-detail__fact-label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+}
+
+.mission-detail__fact-text {
+  font-size: 0.88rem;
+  color: var(--text);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ── Photos ── */
+.mission-detail__photos-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.mission-detail__section-title {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0;
+}
+
+.mission-detail__nasa-link {
+  font-size: 0.72rem;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: color 0.15s;
+}
+
+.mission-detail__nasa-link:hover { color: var(--accent-hover); }
+
+.mission-detail__loading {
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  margin: 0;
+}
+
+.mission-detail__photos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+.mission-detail__photo {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.mission-detail__photo:hover { transform: scale(1.04); }
+
+/* ── Lightbox ── */
+.mission-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 400;
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: mission-overlay-in 0.18s ease;
+}
+
+.mission-lightbox__img {
+  max-width: min(90vw, 900px);
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 10px;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.7);
+  animation: mission-lb-in 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes mission-lb-in {
+  from { opacity: 0; transform: scale(0.94); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.mission-lightbox__close {
+  position: absolute;
+  top: 1rem; right: 1rem;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: var(--text-h);
+  border-radius: 8px;
+  width: 2.25rem; height: 2.25rem;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.mission-lightbox__close:hover { background: rgba(255,255,255,0.15); }
+
+.mission-lightbox__nav {
+  position: absolute;
+  top: 50%; transform: translateY(-50%);
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: var(--text-h);
+  border-radius: 50%;
+  width: 3rem; height: 3rem;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  font-size: 1.6rem; line-height: 1;
+  transition: background 0.15s;
+}
+
+.mission-lightbox__nav:hover { background: rgba(255,255,255,0.18); }
+.mission-lightbox__nav--prev { left: 1.25rem; }
+.mission-lightbox__nav--next { right: 1.25rem; }
+
+.mission-lightbox__counter {
+  position: absolute;
+  top: 1.1rem; left: 50%; transform: translateX(-50%);
+  font-size: 0.78rem; color: var(--text-dim); letter-spacing: 0.05em;
+}
+
+.mission-lightbox__caption {
+  position: absolute;
+  bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+  font-size: 0.8rem; color: var(--text-dim);
+  text-align: center; max-width: 70%;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+
+/* ── Mobile ── */
+@media (max-width: 560px) {
+  .mission-detail { max-width: 100%; }
+  .mission-detail__meta-grid { grid-template-columns: 1fr; }
+  .mission-detail__photos { grid-template-columns: repeat(2, 1fr); }
+}
