@@ -74,10 +74,10 @@ export function MissionsPage() {
         columns={COLUMNS}
         filterKey="name"
         filters={[
-          { key: 'destination', label: 'Destination', type: 'select', options: Array.from(new Set(MISSIONS.map(m => m.destination))) },
-          { key: 'country', label: 'Country', type: 'select', options: Array.from(new Set(MISSIONS.map(m => m.country))) },
-          { key: 'status', label: 'Status', type: 'select', options: Array.from(new Set(MISSIONS.map(m => m.status))) },
-          { key: 'year', label: 'Year', type: 'range', min: Math.min(...MISSIONS.map(m => m.year)), max: Math.max(...MISSIONS.map(m => m.year)) },
+          { key: 'destination', label: 'Destination', type: 'select' },
+          { key: 'country', label: 'Country', type: 'select' },
+          { key: 'status', label: 'Status', type: 'select' },
+          { key: 'year', label: 'Year', type: 'range' },
         ]}
         onRowClick={row => setSelectedMission(row as Mission)}
       />

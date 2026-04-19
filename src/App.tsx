@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Rocket, Home, List } from 'lucide-react'
-import { Topbar, Footer } from './_my-components/index.ts'
+import { Topbar, Footer, Content } from './_my-components/index.ts'
 import type { NavItem } from './_my-components/index.ts'
 import { HomePage } from './pages/HomePage.tsx'
 import { MissionsPage } from './pages/MissionsPage.tsx'
@@ -37,14 +37,14 @@ function App() {
         color="rgba(14, 17, 23, 0.85)"
       />
       <main className="app-content">
-        <div className="app-content__inner">
+        <Content className="app-content__inner">
           {page === 'home' && <HomePage />}
           {page === 'missions' && <MissionsPage />}
           <Footer
             appName="Space Explorer"
             notes={['Data & imagery sourced from NASA', 'Built with React + WebGL']}
           />
-        </div>
+        </Content>
       </main>
     </div>
   )

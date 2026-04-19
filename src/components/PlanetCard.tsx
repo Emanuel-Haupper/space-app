@@ -1,5 +1,5 @@
 import type { Planet } from '../data/planets.ts'
-import BorderGlow from '../_my-components/components/ui/BorderGlow.tsx'
+import { BorderGlow } from '../_my-components/index.ts'
 import './css/planet-card.css'
 
 type PlanetCardProps = {
@@ -22,7 +22,7 @@ export function PlanetCard({ planet, index = 0, onClick }: PlanetCardProps) {
                 colors={['#a78bfa', '#60a5fa', '#c4b5fd']}
                 className="planet-card-glow"
             >
-                <button className="planet-card" onClick={onClick} type="button">
+                <div className="planet-card" onClick={onClick}>
                     <div className="planet-card__img-wrap">
                         <img
                             className="planet-card__img"
@@ -36,7 +36,7 @@ export function PlanetCard({ planet, index = 0, onClick }: PlanetCardProps) {
                         <p className="planet-card__type">{planet.type}</p>
                         <p className="planet-card__tagline">{planet.tagline}</p>
                     </div>
-                </button>
+                </div>
             </BorderGlow>
         </div>
     )

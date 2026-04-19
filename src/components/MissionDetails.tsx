@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { X, ExternalLink, Rocket, Globe, Users, Calendar, MapPin } from 'lucide-react'
+import { CustomButton } from '../_my-components/index.ts'
 import './css/mission-details.css'
 
 type Mission = {
@@ -107,9 +108,13 @@ export function MissionDetail({ mission, onClose }: MissionDetailProps) {
         <>
             <div className="mission-overlay" ref={overlayRef} onClick={handleOverlayClick}>
                 <div className="mission-detail">
-                    <button className="mission-detail__close" onClick={onClose} type="button" aria-label="Close">
-                        <X size={18} />
-                    </button>
+                    <CustomButton
+                        className="mission-detail__close"
+                        icon={<X size={18} />}
+                        variant="ghost"
+                        onClick={onClose}
+                        aria-label="Close"
+                    />
 
                     <div className="mission-detail__hero">
                         {!loading && photos[0] && (
@@ -207,23 +212,35 @@ export function MissionDetail({ mission, onClose }: MissionDetailProps) {
                 const idx = lightboxIndex
                 return (
                     <div className="mission-lightbox" onClick={() => setLightboxIndex(null)}>
-                        <button className="mission-lightbox__close" onClick={() => setLightboxIndex(null)} aria-label="Close"><X size={20} /></button>
-                        <button
+                        <CustomButton
+                            className="mission-lightbox__close"
+                            icon={<X size={20} />}
+                            variant="ghost"
+                            onClick={() => setLightboxIndex(null)}
+                            aria-label="Close"
+                        />
+                        <CustomButton
                             className="mission-lightbox__nav mission-lightbox__nav--prev"
+                            variant="ghost"
                             onClick={e => { e.stopPropagation(); setLightboxIndex(i => i !== null ? (i - 1 + photos.length) % photos.length : null) }}
                             aria-label="Previous"
-                        >‹</button>
+                        >
+                            {'‹'}
+                        </CustomButton>
                         <img
                             className="mission-lightbox__img"
                             src={photos[idx].href}
                             alt={photos[idx].title}
                             onClick={e => e.stopPropagation()}
                         />
-                        <button
+                        <CustomButton
                             className="mission-lightbox__nav mission-lightbox__nav--next"
+                            variant="ghost"
                             onClick={e => { e.stopPropagation(); setLightboxIndex(i => i !== null ? (i + 1) % photos.length : null) }}
                             aria-label="Next"
-                        >›</button>
+                        >
+                            {'›'}
+                        </CustomButton>
                         <div className="mission-lightbox__counter">{idx + 1} / {photos.length}</div>
                         <p className="mission-lightbox__caption">{photos[idx].title}</p>
                     </div>

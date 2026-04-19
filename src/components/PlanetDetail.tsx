@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { X, ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react'
 import type { Planet } from '../data/planets.ts'
+import { CustomButton } from '../_my-components/index.ts'
 import './css/planet-details.css'
 
 type NasaImage = { href: string; title: string }
@@ -93,9 +94,13 @@ export function PlanetDetails({ planet, onClose }: PlanetDetailProps) {
         <>
             <div className="planet-overlay" ref={overlayRef} onClick={handleOverlayClick}>
                 <div className="planet-detail">
-                    <button className="planet-detail__close" onClick={onClose} type="button" aria-label="Close">
-                        <X size={18} />
-                    </button>
+                    <CustomButton
+                        className="planet-detail__close"
+                        icon={<X size={18} />}
+                        variant="ghost"
+                        onClick={onClose}
+                        aria-label="Close"
+                    />
 
                     <div className="planet-detail__hero">
                         <img src={planet.image} alt={planet.name} className="planet-detail__hero-img" />
@@ -158,29 +163,33 @@ export function PlanetDetails({ planet, onClose }: PlanetDetailProps) {
                 const idx = lightboxIndex
                 return (
                     <div className="photo-lightbox" onClick={closeLightbox}>
-                        <button className="photo-lightbox__close" onClick={closeLightbox} aria-label="Close">
-                            <X size={20} />
-                        </button>
-                        <button
+                        <CustomButton
+                            className="photo-lightbox__close"
+                            icon={<X size={20} />}
+                            variant="ghost"
+                            onClick={closeLightbox}
+                            aria-label="Close"
+                        />
+                        <CustomButton
                             className="photo-lightbox__nav photo-lightbox__nav--prev"
+                            icon={<ChevronLeft size={28} />}
+                            variant="ghost"
                             onClick={e => { e.stopPropagation(); setLightboxIndex(i => i !== null ? (i - 1 + photos.length) % photos.length : null) }}
                             aria-label="Previous"
-                        >
-                            <ChevronLeft size={28} />
-                        </button>
+                        />
                         <img
                             className="photo-lightbox__img"
                             src={photos[idx].href}
                             alt={photos[idx].title}
                             onClick={e => e.stopPropagation()}
                         />
-                        <button
+                        <CustomButton
                             className="photo-lightbox__nav photo-lightbox__nav--next"
+                            icon={<ChevronRight size={28} />}
+                            variant="ghost"
                             onClick={e => { e.stopPropagation(); setLightboxIndex(i => i !== null ? (i + 1) % photos.length : null) }}
                             aria-label="Next"
-                        >
-                            <ChevronRight size={28} />
-                        </button>
+                        />
                         <div className="photo-lightbox__counter">{idx + 1} / {photos.length}</div>
                         <p className="photo-lightbox__caption">{photos[idx].title}</p>
                     </div>

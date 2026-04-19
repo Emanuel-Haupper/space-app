@@ -12,6 +12,7 @@
 .planet-card {
   display: flex;
   flex-direction: column;
+  gap: 0;
   background: rgba(255, 255, 255, 0.04);
   border: none;
   border-radius: 8px;
@@ -19,6 +20,7 @@
   cursor: pointer;
   text-align: left;
   padding: 1px;
+  white-space: normal;
   font-family: inherit;
   color: inherit;
   width: 100%;
