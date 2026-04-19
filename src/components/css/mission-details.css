@@ -21,7 +21,8 @@
   position: relative;
   width: 100%;
   max-width: 480px;
-  height: 100vh;
+  margin-top: var(--mc-topbar-height, 52px);
+  height: calc(100vh - var(--mc-topbar-height, 52px));
   background: var(--surface);
   border-left: 1px solid var(--border);
   overflow-y: auto;
@@ -35,7 +36,7 @@
 
 .mission-detail__close {
   position: fixed;
-  top: 3.5rem;
+  top: calc(var(--mc-topbar-height, 52px) + 0.5rem);
   right: 0.85rem;
   z-index: 10;
   background: rgba(0, 0, 0, 0.45);
@@ -298,7 +299,9 @@
 
 .mission-lightbox__counter {
   position: absolute;
-  top: 1.1rem; left: 50%; transform: translateX(-50%);
+  top: calc(var(--mc-topbar-height, 52px) + 0.5rem);
+  left: 50%;
+  transform: translateX(-50%);
   font-size: 0.78rem; color: var(--text-dim); letter-spacing: 0.05em;
 }
 

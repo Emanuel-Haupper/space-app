@@ -25,6 +25,23 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+*::-webkit-scrollbar {
+  width: 2px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--mc-surface-2);
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--mc-accent);
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--mc-accent-hover);
+}
+
 *, *::before, *::after {
   box-sizing: border-box;
 }

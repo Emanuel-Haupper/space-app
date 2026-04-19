@@ -1,13 +1,13 @@
 import { useState } from 'react'
 import { Rocket, Activity, Globe, Users } from 'lucide-react'
-import { PageHeader } from '../components/PageHeader.tsx'
-import { StatCard } from '../components/StatCard.tsx'
+import { PageHeader, StatCard, HeroSection } from '../_my-components/index.ts'
 import { PlanetCard } from '../components/PlanetCard.tsx'
 import { PlanetDetails } from '../components/PlanetDetail.tsx'
 import { PLANETS } from '../data/planets.ts'
 import type { Planet } from '../data/planets.ts'
-import './HomePage.css'
 import Galaxy from '../components/Galaxy.tsx'
+
+import './../assets/css/home-page.css'
 
 export function HomePage() {
     const [selectedPlanet, setSelectedPlanet] = useState<Planet | null>(null)
@@ -21,29 +21,25 @@ export function HomePage() {
 
     return (
         <div className="home-page page-transition">
-            <div className="galaxy-bg">
-                <Galaxy
-                    mouseInteraction={false}
-                    density={2}
-                    glowIntensity={0.1}
-                    saturation={0}
-                    hueShift={260}
-                    twinkleIntensity={0.6}
-                    rotationSpeed={0.05}
-                    starSpeed={0.4}
-                    speed={0.6}
-                />
-            </div>
-
-            <div className="home-hero">
-                <div className="home-hero__content">
-                    <p className="home-hero__eyebrow">Welcome to</p>
-                    <h1 className="home-hero__title">Space Explorer</h1>
-                    <p className="home-hero__tagline">
-                        Discover humanity's journey into the cosmos — from the first satellite to the edges of the solar system
-                    </p>
-                </div>
-            </div>
+            <HeroSection
+                eyebrow="Welcome to"
+                title="Space Explorer"
+                tagline="Discover humanity's journey into the cosmos — from the first satellite to the edges of the solar system"
+                titleClassName="main-title-font"
+                background={
+                    <Galaxy
+                        mouseInteraction={false}
+                        density={2}
+                        glowIntensity={0.1}
+                        saturation={0}
+                        hueShift={260}
+                        twinkleIntensity={0.6}
+                        rotationSpeed={0.05}
+                        starSpeed={0.4}
+                        speed={0.6}
+                    />
+                }
+            />
 
             <div>
                 <PageHeader

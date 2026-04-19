@@ -1,6 +1,6 @@
 import type { Planet } from '../data/planets.ts'
-import BorderGlow from './BorderGlow.tsx'
-import './PlanetCard.css'
+import BorderGlow from '../_my-components/components/ui/BorderGlow.tsx'
+import './css/planet-card.css'
 
 type PlanetCardProps = {
     planet: Planet

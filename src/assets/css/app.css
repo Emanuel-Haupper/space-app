@@ -1,3 +1,30 @@
+@import '../../_my-components/components/css/theme.css';
+
+/*
+  Map _my-components theme vars to this app's colour palette.
+  Override any --mc-* variable here to retheme the entire lib.
+*/
+:root {
+  --mc-accent: var(--accent);
+  --mc-accent-hover: var(--accent-hover);
+  --mc-accent-subtle: var(--accent-subtle);
+  --mc-text: var(--text);
+  --mc-text-h: var(--text-h);
+  --mc-text-dim: var(--text-dim);
+  --mc-bg: var(--bg);
+  --mc-surface: var(--surface);
+  --mc-surface-2: var(--surface-2);
+  --mc-border: var(--border);
+  --mc-success: var(--success);
+  --mc-warning: var(--warning);
+  --mc-danger: var(--danger);
+}
+
+.main-title-font {
+  font-family: 'Syncopate', sans-serif;
+  font-weight: 400;
+}
+
 .app-shell {
   display: flex;
   flex-direction: column;

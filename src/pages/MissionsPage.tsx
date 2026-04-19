@@ -1,9 +1,7 @@
 import { useState } from 'react'
-import { DataTable } from '../_my-components/index.ts'
-import { Badge } from '../components/Badge.tsx'
-import { PageHeader } from '../components/PageHeader.tsx'
-import { MissionDetail } from '../components/MissionDetail.tsx'
-import './MissionsPage.css'
+import { DataTable, Badge, PageHeader } from '../_my-components/index.ts'
+import { MissionDetail } from '../components/MissionDetails.tsx'
+import './../assets/css/missions-page.css'
 
 type Mission = {
   name: string

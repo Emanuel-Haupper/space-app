@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { X, ExternalLink, Rocket, Globe, Users, Calendar, MapPin } from 'lucide-react'
-import './MissionDetail.css'
+import './css/mission-details.css'
 
 type Mission = {
     name: string

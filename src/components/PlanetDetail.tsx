@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { X, ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react'
 import type { Planet } from '../data/planets.ts'
-import './PlanetDetail.css'
+import './css/planet-details.css'
 
 type NasaImage = { href: string; title: string }
 
